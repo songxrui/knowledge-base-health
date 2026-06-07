@@ -140,3 +140,22 @@ description: |
 ---
 ## 版本
 - v1.0 | 2026-06-07 | 初始版本(终极形态) | 原因: KB 膨胀缺少系统级健康巡检，INDEX.md 长期未更新
+## R2增强: 自动修复建议 + INDEX.md 自动更新
+
+### INDEX.md 自动修复
+触发: "修复INDEX" / "sync INDEX"
+对比 INDEX.md 与实际目录 → 自动生成补丁:
+- 缺失条目: 自动追加到 INDEX.md 对应章节
+- 过期引用: 自动注释(`<!-- 已删除 -->`)或移除
+- 数字过期: 自动更新统计数字
+输出 diff → 等待用户确认 → 应用
+
+### KB 增长趋势
+读取 `_logs/reports/` 中的历史巡检报告 → 生成趋势图(mermaid):
+```mermaid
+xychart-beta
+  title "KB增长趋势"
+  x-axis ["W1","W2","W3","W4"]
+  y-axis "文件数"
+  bar [N1,N2,N3,N4]
+```
