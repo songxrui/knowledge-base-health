@@ -81,6 +81,11 @@ description: |
    - 不存在的引用 → 标记 "断裂引用"
    - 排除: 外部 URL、http 链接
 
+### Step 5.5: 巡检验证
+   - 去重候选验证: `$dupCount -gt 0` → 存在重复=需要人工审核，`$dupCount -eq 0` → 通过
+   - 孤点验证: `$orphanCount -eq 0` → 通过，`>0` → 需清理
+   - INDEX一致性: `$indexMismatch -eq 0` → 通过，`>0` → 需更新
+
 ### Step 6: 输出巡检报告
 
 ```markdown
